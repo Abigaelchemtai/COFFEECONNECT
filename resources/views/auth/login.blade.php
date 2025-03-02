@@ -138,7 +138,7 @@
         <div class="social-login">
             <p>Or login with:</p>
             <button class="social-btn google">Google</button>
-            <button class="social-btn facebook">Tando</button>
+            <button class="social-btn wallet">Wallet</button>
         </div>
         <p class="register-link">Don't have an account? <a href="signup">Register here</a></p>
     </div>

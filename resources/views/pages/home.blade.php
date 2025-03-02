@@ -22,7 +22,7 @@
                     <h1>Farmers</h1>
                     <h3>Sell Coffee and Invest in Bitcoin</h3>
                     <p>Farmers can sell their coffee directly on the platform and receive payment in Bitcoin. Additionally, they can choose to invest their earnings into Bitcoin for future growth, securing their financial future in a digital world.</p>
-                    <a href="#" class="btn btn-primary">Start Selling</a>
+                    <a href="{{ route('farmer.dashboard')}}" class="btn btn-primary">Start Selling</a>
                 </div>
             </div>
             <div class="col-md-6">

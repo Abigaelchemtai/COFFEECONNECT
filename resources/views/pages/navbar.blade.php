@@ -6,8 +6,8 @@
             </button>
            <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Farmers</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ route('home')}}">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ route('farmer.dashboard') }}">Farmers</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Buyers</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Lenders</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Shop</a></li>
