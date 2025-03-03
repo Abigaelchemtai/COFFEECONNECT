@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\User; // Import User model
 
 class Coffeelisting extends Model
@@ -15,11 +16,12 @@ class Coffeelisting extends Model
 
     protected $fillable = [
         'user_id',
-        'name',
-        'description',
-        'price',
-        'stock_quantity',
-        'status'
+        'coffee_brand',
+        'quantity_kg',
+        'price_per_kg',
+        'coffee_grade',
+        'status',
+        'wallet_number',
     ];
 
     /**
@@ -30,12 +32,4 @@ class Coffeelisting extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    /**
-     * Automatically update status when stock changes
-     */
-    public function updateStatus()
-    {
-        $this->status = $this->stock_quantity > 0 ? 'available' : 'sold_out';
-        $this->save();
-    }
 }

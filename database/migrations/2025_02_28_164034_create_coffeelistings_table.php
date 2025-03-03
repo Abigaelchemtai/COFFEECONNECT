@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('coffeelistings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Link to user
-            $table->string('UserName');
-            $table->text('description');
-            $table->decimal('price', 10, 2);
-            $table->integer('stock_quantity')->default(0);
-            $table->enum('status', ['available', 'sold_out'])->default('available');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->enum('coffee_type', ['Speciality', 'Robusta', 'Arabica']);
+            $table->decimal('quantity', 10, 2);
+            $table->decimal('price_per_kg', 10, 2);
+            $table->string('coffee_grade');
+            $table->enum('status', ['Available', 'Sold Out', 'Pending'])->default('Available');
+            $table->string('wallet_number');
             $table->timestamps();
         });
     }
