@@ -12,8 +12,12 @@ class FarmersDashboardController extends Controller {
     }
 
     // 🏡 Farmers Dashboard
-    public function dashboard() {
-        return view('pages.farmers');
+    public function dashboard()
+    {
+        // Fetch all coffee listings for the logged-in farmer
+        $coffeeListings = CoffeeListing::where('user_id', auth()->id())->get();
+
+        return view('pages.farmers', compact('coffeeListings'));
     }
 
     public function create()
@@ -21,6 +25,7 @@ class FarmersDashboardController extends Controller {
         $user = Auth::user(); // Get the authenticated user
         return view('farmer.create', compact('user'));
     }
+
 
     // 📜 View Coffee Listings
     public function coffeeListings() {
