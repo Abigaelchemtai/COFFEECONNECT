@@ -17,7 +17,7 @@ return new class extends Migration
             $table->enum('coffee_type', ['Speciality', 'Robusta', 'Arabica']);
             $table->decimal('quantity', 10, 2);
             $table->decimal('price_per_kg', 10, 2);
-            $table->string('coffee_grade');
+            $table->enum('coffee_grade', ['AA', 'AB', 'PB']);
             $table->enum('status', ['Available', 'Sold Out', 'Pending'])->default('Available');
             $table->string('wallet_number');
             $table->timestamps();

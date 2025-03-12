@@ -28,31 +28,20 @@ Route::get('/farmer', function () {
     return view('layouts.nav'); // Ensure this view exists in resources/views/layouts/nav.blade.php
 })->name('farmer.nav');
 
-Route::get('/farmer-dashboard', [FarmersDashboardController::class, 'dashboard'])->name('farmer.dashboard');
-
-Route::get('/farmer/coffee-listings', [FarmersDashboardController::class, 'coffeeListings'])
-    ->name('farmer.coffeeListings');
-
-
-//farmers
 Route::middleware(['auth'])->group(function () {
     // 📌 Farmers Dashboard
     Route::get('/farmer-dashboard', [FarmersDashboardController::class, 'dashboard'])->name('farmer.dashboard');
 
     // ☕ Coffee Listings
-    Route::get('/farmers/listings', [FarmersDashboardController::class, 'coffeeListings'])->name('farmer.coffeelistings');
-    Route::get('/farmers/create', [FarmersDashboardController::class, 'createCoffee'])->name('farmer.create');
-    Route::post('/farmers/store', [FarmersDashboardController::class, 'storeCoffee'])->name('farmer.store');
-    Route::get('/farmers/edit/{id}', [FarmersDashboardController::class, 'editCoffee'])->name('farmer.edit');
-    Route::put('/farmers/update/{id}', [FarmersDashboardController::class, 'updateCoffee'])->name('farmer.update');
+    Route::prefix('farmers')->group(function () {
+        Route::get('/farmer/listings', [FarmersDashboardController::class, 'coffeeListings'])->name('pages.farmers');
+        Route::get('/create', [FarmersDashboardController::class, 'createCoffee'])->name('farmer.create');
+        Route::post('/farmer/store-coffee', [FarmersDashboardController::class, 'storeCoffee'])->name('farmer.storeCoffee');
+        Route::get('/farmer/edit-coffee/{id}', [FarmersDashboardController::class, 'editCoffee'])->name('farmer.editCoffee');
+        Route::patch('/farmer/update-coffee/{id}', [FarmersDashboardController::class, 'updateCoffee'])->name('farmer.updateCoffee');
 
-    // 👤 Profile
-    Route::get('/farmers/profile', [FarmersDashboardController::class, 'profile'])->name('farmer.profile');
-
-    // 🌎 Communities
-    Route::get('/farmers/communities', [FarmersDashboardController::class, 'communities'])->name('farmer.communities');
+      });
 });
-
 
 // Investor Dashboard
 Route::get('/investor-dashboard', function () {

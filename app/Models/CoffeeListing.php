@@ -16,13 +16,14 @@ class Coffeelisting extends Model
 
     protected $fillable = [
         'user_id',
-        'coffee_brand',
-        'quantity_kg',
+        'coffee_type',
+        'quantity',
         'price_per_kg',
-        'coffee_grade',
+        'coffee_grade', // Now restricted to AA, AB, PB
         'status',
         'wallet_number',
     ];
+    
 
     /**
      * Relationship: A coffee listing belongs to a user
