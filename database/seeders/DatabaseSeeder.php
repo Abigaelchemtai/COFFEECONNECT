@@ -16,11 +16,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-
-        //clear the users table to prevent duplicate
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;'); // Disable foreign key checks
         DB::table('users')->truncate();
-        // User::factory(10)->create();
-
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;'); // Enable foreign key checks
+    
         User::create([
             'UserName' => 'TestUser',  
             'FirstName' => 'Test',

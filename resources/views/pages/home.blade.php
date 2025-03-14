@@ -37,7 +37,7 @@
                     <h1>Buyers</h1>
                     <h3>Purchase Coffee with Bitcoin</h3>
                     <p>Buyers can use Bitcoin to purchase high-quality coffee from farmers. By doing so, they support local farmers and can access the finest coffee directly from the source.</p>
-                    <a href="#" class="btn btn-primary">Start Buying</a>
+                    <a href="{{ route('investor.dashboard') }}" class="btn btn-primary">Start Buying</a>
                 </div>
             </div>
             <div class="col-md-6">

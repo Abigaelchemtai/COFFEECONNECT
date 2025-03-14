@@ -23,6 +23,13 @@ class Coffeelisting extends Model
         'status',
         'wallet_number',
     ];
+
+
+    // ✅ Fix: Relationship - Each coffee listing belongs to a farmer (user)
+    public function farmer(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id'); 
+    }
     
 
     /**
@@ -32,5 +39,16 @@ class Coffeelisting extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function requests()
+    {
+        return $this->hasMany(ProductRequest::class, 'listing_id');
+    }
+
+    public function productRequests()
+    {
+        return $this->hasMany(ProductRequest::class, 'listing_id');
+    }
+
 
 }

@@ -165,6 +165,10 @@ div.content {
                 <li class="nav-item"><a class="nav-link text-light" href="{{ route('home')}}">Home</a></li>
                 <li class="nav-item"><a class="nav-link text-light" href="{{ route('pages.farmers') }}">Coffeelistings</a></li>
                 <li class="nav-item"><a class="nav-link text-light" href="#">Communities</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('requests.index') }}">Requests</a>
+                </li>
+
                 
             </ul>
         </div>

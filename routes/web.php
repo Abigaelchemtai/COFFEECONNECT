@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\CoffeeListingsController;
 use App\Http\Controllers\FarmersDashboardController;
+use App\Http\Controllers\InvestorController;
+use App\Http\Controllers\RequestController;
 use Illuminate\Support\Facades\Auth;
 
 // Home Page
@@ -44,9 +46,24 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // Investor Dashboard
-Route::get('/investor-dashboard', function () {
-    return view('pages.investors'); // Ensure this view exists in resources/views/pages/investors.blade.php
-})->name('investor.dashboard');
+Route::get('/investor-dashboard', [InvestorController::class, 'investor'])
+    ->name('investor.dashboard')
+    ->middleware('auth'); // Remove 'investor.only'
+
+Route::get('/investors', [InvestorController::class, 'index'])
+    ->name('investors.index')
+    ->middleware('auth');
+
+Route::post('/request-product', [RequestController::class, 'requestProduct'])
+    ->name('request.product')
+    ->middleware('auth');
+
+Route::get('/filter-farmers', [InvestorController::class, 'filterFarmers'])->name('filter.farmers');
+
+Route::get('/requests', [RequestController::class, 'showRequests'])->name('requests.index');
+
+Route::put('/requests/{id}', [RequestController::class, 'updateRequest'])->name('requests.update');
+
 
 // Account Page (Only for Authenticated Users)
 Route::get('/account', function () {
