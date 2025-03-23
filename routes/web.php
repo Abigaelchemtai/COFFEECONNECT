@@ -6,6 +6,7 @@ use App\Http\Controllers\CoffeeListingsController;
 use App\Http\Controllers\FarmersDashboardController;
 use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\RequestController;
+use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Auth;
 
 // Home Page
@@ -69,3 +70,7 @@ Route::put('/requests/{id}', [RequestController::class, 'updateRequest'])->name(
 Route::get('/account', function () {
     return Auth::check() ? view('pages.account') : redirect()->route('login');
 })->name('account');
+
+Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
+Route::get('/shop/{id}', [ShopController::class, 'show'])->name('shop.show');
+
