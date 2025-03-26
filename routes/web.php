@@ -73,4 +73,8 @@ Route::get('/account', function () {
 
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
 Route::get('/shop/{id}', [ShopController::class, 'show'])->name('shop.show');
+Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
 
+// Cart & Checkout Routes
+Route::get('/cart', [CartController::class, 'view'])->name('cart.view');
+Route::post('/cart/checkout', [PaymentController::class, 'checkout'])->name('cart.checkout');
