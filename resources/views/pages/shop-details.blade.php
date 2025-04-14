@@ -7,6 +7,10 @@
     <p>{{ $item->description }}</p>
     <h4>Price: ${{ number_format($item->price, 2) }}</h4>
     <p>Stock: {{ $item->stock }}</p>
-    <a href="#" class="btn btn-success">Buy Now</a>
+    <form method="POST" action="{{ route('cart.add', $item->id) }}">
+    @csrf
+    <button type="submit" class="btn btn-success">Add to Cart</button>
+</form>
+
 </div>
 @endsection

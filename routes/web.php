@@ -7,6 +7,8 @@ use App\Http\Controllers\FarmersDashboardController;
 use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\RequestController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Auth;
 
 // Home Page
@@ -71,10 +73,17 @@ Route::get('/account', function () {
     return Auth::check() ? view('pages.account') : redirect()->route('login');
 })->name('account');
 
-Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
-Route::get('/shop/{id}', [ShopController::class, 'show'])->name('shop.show');
-Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
+    Route::get('/shop/{id}', [ShopController::class, 'show'])->name('shop.show');
+});
+
 
 // Cart & Checkout Routes
-Route::get('/cart', [CartController::class, 'view'])->name('cart.view');
-Route::post('/cart/checkout', [PaymentController::class, 'checkout'])->name('cart.checkout');
+Route::middleware(['auth'])->get('/cart', [CartController::class, 'view'])->name('cart.view');
+Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
+Route::middleware(['auth'])->delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
+// Checkout Routes
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+Route::post('/checkout/confirm', [CheckoutController::class, 'confirm'])->name('checkout.confirm');
+

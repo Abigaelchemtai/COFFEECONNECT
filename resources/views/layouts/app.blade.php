@@ -303,6 +303,12 @@
     {{-- Navbar --}}
     @include ('pages.navbar')
     
+    @if(session('success'))
+    <div class="alert alert-success text-center">
+        {{ session('success') }}
+    </div>
+@endif
+
     {{-- Contents here--}}
 <div class="container">
 @yield ('content')

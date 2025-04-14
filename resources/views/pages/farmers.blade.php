@@ -164,7 +164,7 @@ div.content {
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link text-light" href="{{ route('home')}}">Home</a></li>
                 <li class="nav-item"><a class="nav-link text-light" href="{{ route('pages.farmers') }}">Coffeelistings</a></li>
-                <li class="nav-item"><a class="nav-link text-light" href="#">Communities</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="{{ route('home')}}">Communities</a></li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('requests.index') }}">Requests</a>
                 </li>

@@ -10,7 +10,7 @@
         <li class="nav-item"><a class="nav-link" href="{{ route('farmer.dashboard') }}">Farmers</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ route('investor.dashboard') }}">Investor</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ route('shop.index') }}">Shop</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Cart</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ route('cart.view') }}">Cart</a></li>
 
         <!-- Dropdown for Account -->
         <li class="nav-item dropdown">
